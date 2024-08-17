@@ -2,8 +2,8 @@ provider "aws" {
   region = "eu-central-1"  # Replace with your desired region
 
   # Use environment variables, an AWS credentials file, or IAM roles for credentials
-  access_key = var.access_key
-  secret_key = var.secret_key
+  access_key = 
+  secret_key = 
 }
 
 resource "aws_instance" "example" {
@@ -28,10 +28,11 @@ user_data = <<-EOF
               sudo yum update -y
 
               # Install Docker
-              sudo amazon-linux-extras install docker -y
-              sudo service docker start
-              sudo usermod -a -G docker ec2-user
-
+              sudo yum install -y docker
+              sudo systemctl start docker
+              sudo systemctl enable docker
+              sudo usermod -aG docker ec2-user
+              
               # Install Python3
               sudo yum install python3 -y
 
