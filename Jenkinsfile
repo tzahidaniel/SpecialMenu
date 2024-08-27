@@ -1,46 +1,41 @@
 pipeline {
     agent any
-
     environment {
-        // Retrieve AWS credentials from Jenkins and set them as environment variables
-        AWS_ACCESS_KEY_ID = credentials('aws_credentials').username
-        AWS_SECRET_ACCESS_KEY = credentials('aws_credentials').password
+        DOCKERHUB_CREDENTIALS = credentials('finalproj')
     }
 
     stages {
-        stage('Checkout') {
+        stage('SCM Checkout') {
             steps {
-                // Checkout your repository
-                git 'https://github.com/tzahidaniel/SpecialMenu.git'
+                git branch: 'main', credentialsId: 'gitfinalproj', url: 'https://github.com/tzahidaniel/SpecialMenu.git'
             }
         }
 
-        stage('Terraform Init') {
+        stage('Build Docker Image') {
             steps {
-                // Initialize Terraform
-                sh 'terraform init'
+                sh 'docker build -t tzahidaniel/specialmenu:$BUILD_NUMBER .'
             }
         }
 
-        stage('Terraform Plan') {
+        stage('Login to Docker Hub') {
             steps {
-                // Plan Terraform changes
-                sh 'terraform plan'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
             }
         }
 
-        stage('Terraform Apply') {
+        stage('Push Image') {
             steps {
-                // Apply Terraform changes
-                sh 'terraform apply -auto-approve'
+                sh 'docker push tzahidaniel/specialmenu:$BUILD_NUMBER'
             }
         }
-    }
 
-    post {
-        always {
-            // Clean up workspace after build
-            cleanWs()
+        stage('Deploy Application') {
+            steps {
+                sh '''
+                docker stop webapp_ctr || true
+                docker run --rm -d -p 5000:5000 --name webapp_ctr tzahidaniel/specialmenu:$BUILD_NUMBER
+                '''
+            }
         }
     }
 }
