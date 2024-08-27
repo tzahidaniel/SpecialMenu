@@ -35,6 +35,8 @@ user_data = <<-EOF
             sudo systemctl enable docker
             sudo usermod -aG docker ec2-user
 
+            sudo yum install -y git
+
             # Add the Jenkins repository
             sudo wget -O /etc/yum.repos.d/jenkins.repo \
                 https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -58,7 +60,7 @@ user_data = <<-EOF
 
   # Block device mapping (optional)
   root_block_device {
-    volume_size = 8            # Size of the root volume in GiB
+    volume_size = 32            # Size of the root volume in GiB
     volume_type = "gp3"        # Type of the root volume
   }
 
