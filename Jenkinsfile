@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('SCM Checkout') {
             steps {
-                git branch: 'main', credentialsId: 'gitfinalproj', url: 'https://github.com/tzahidaniel/SpecialMenu.git'
+                git branch: 'master', credentialsId: 'gitfinalproj', url: 'https://github.com/tzahidaniel/SpecialMenu.git'
             }
         }
 
