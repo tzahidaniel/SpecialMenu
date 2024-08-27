@@ -13,7 +13,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'sudo docker build -t tzahidaniel/specialmenu:$BUILD_NUMBER .'
+                sh 'docker build -t tzahidaniel/specialmenu:$BUILD_NUMBER .'
             }
         }
 
