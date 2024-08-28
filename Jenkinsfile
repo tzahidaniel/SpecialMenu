@@ -56,7 +56,7 @@ pipeline {
                     // Deploy the application
                     echo 'Deploying the application...'
                     sh '''
-                    docker run --rm -d -p 3000:3000 --name random-menu ${DOCKER_IMAGE}:${BUILD_NUMBER}
+                    docker run --rm -d -p 5000:5000 --name random-menu ${DOCKER_IMAGE}:${BUILD_NUMBER}
                     '''
                 }
             }
