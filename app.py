@@ -3,16 +3,9 @@ import random
 
 app = Flask(__name__)
 
-<<<<<<< HEAD
 starters = ["Soup", "Salad", "Bruschetta", "Wings", "Cheese Balls", "Carpaccio", "Garlic Bread", "Smash Potatos", "Egg Rolls"]
 main_dishes = ["Steak", "Pasta", "Pizza", "Burger", "Shawarma", "Lazanya", "Wrappers", "Rice And Meat", "Falafel"]
 desserts = ["Ice Cream", "Cake", "Fruit Salad", "Souffle", "Donut", "Jello", "Macaroons"]
-=======
-starters = ["Soup", "Salad", "Bruschetta", "Wings", "Cheese Balls", "Carpaccio", "Garlic Bread", "Smash Potatoes", "Egg Rolls"]
-main_dishes = ["Steak", "Pasta", "Pizza", "Burger", "Shawarma", "Lasagna", "Wraps", "Rice And Meat", "Falafel"]
-desserts = ["Ice Cream", "Cake", "Fruit Salad", "Soufflé", "Donut", "Jello", "Macarons"]
-drinks = ["Coca Cola", "Orange Juice", "Coca Cola Zero", "Grape Juice", "Fresh Lemon Juice", "Apple Juice", "Lemon Sprite", "Watermelon Lemonade", "Iced Tea", "Strawberry Lemonade", "Water"]
->>>>>>> feature
 
 @app.route('/')
 def home():
