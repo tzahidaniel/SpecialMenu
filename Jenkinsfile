@@ -16,9 +16,10 @@ pipeline {
                     echo "Checking out the repository from branch: ${env.BRANCH_NAME}"
                     git branch: env.BRANCH_NAME, credentialsId: GIT_CREDENTIALS_ID, url: GIT_REPO_URL
 
-                    // Clean up any previous images
-                    echo 'Cleaning up old Docker images...'
-                    sh "docker rmi ${DOCKER_IMAGE}:${BUILD_NUMBER} || true"
+                    // Clean up the previous Docker image
+                    echo 'Cleaning up the previous Docker image...'
+                    def previousBuildNumber = (BUILD_NUMBER.toInteger() - 1).toString()
+                    sh "docker rmi ${DOCKER_IMAGE}:${previousBuildNumber} || true"
 
                     // Build the Docker image
                     echo 'Building the Docker image...'
