@@ -6,7 +6,7 @@ app = Flask(__name__)
 starters = ["Soup", "Salad", "Bruschetta", "Wings", "Cheese Balls", "Carpaccio", "Garlic Bread", "Smash Potatoes", "Egg Rolls"]
 main_dishes = ["Steak", "Pasta", "Pizza", "Burger", "Shawarma", "Lasagna", "Wraps", "Rice And Meat", "Falafel"]
 desserts = ["Ice Cream", "Cake", "Fruit Salad", "Soufflé", "Donut", "Jello", "Macarons"]
-drinks = ["Coca Cola", "Orange Juice", "Coca Cola Zero", "Grape Juice", "Fresh Lemon Juice", "Apple Juice", "Lemon Sprite", "Watermelon Lemonade", "Iced Tea", "Strawberry Lemonade", "Sparkling Water", "Fresh Strawberry Juice", "Natural Grape Juice"]
+drinks = ["Coca Cola", "Orange Juice", "Coca Cola Zero", "Grape Juice", "Fresh Lemon Juice", "Apple Juice", "Lemon Sprite", "Watermelon Lemonade", "Iced Tea", "Strawberry Lemonade", "Sparkling Water", "Fresh Strawberry Juice"]
 
 @app.route('/')
 def home():
