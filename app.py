@@ -13,8 +13,8 @@ def home():
     starter = random.choice(starters)
     main_dish = random.choice(main_dishes)
     dessert = random.choice(desserts)
-    drinks = random.choice(drinks)
-    return render_template('index.html', starter=starter, main_dish=main_dish, dessert=dessert, drink=drinks)
+    drink = random.choice(drinks)
+    return render_template('index.html', starter=starter, main_dish=main_dish, dessert=dessert, drink=drink)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
